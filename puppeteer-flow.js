@@ -2,6 +2,9 @@ const puppeteer = require("puppeteer");
 const microtime = require("microtime");
 
 
+// Select quality
+const quality = '240p';
+
 let sleep = ms => new Promise(r => setTimeout(r, ms));
 
 (async () => {
@@ -51,8 +54,6 @@ let sleep = ms => new Promise(r => setTimeout(r, ms));
     await sleep(500);
   });
 
-  // Select quality
-  const quality = '480p';
   let selection;
   let qualityOptions = await page.$$(".ytp-menuitem")
   let qualityOptionsValues = await Promise.all(qualityOptions.map(async (el) => await (await el.getProperty('innerText')).jsonValue()));
